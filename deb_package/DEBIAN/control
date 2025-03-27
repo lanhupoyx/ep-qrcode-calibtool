@@ -1,0 +1,9 @@
+Package: ep-qrcode-calibtool
+Version:1.3.0
+Architecture: amd64
+Maintainer: yx
+Installed-Size:9627706
+Depends: 
+Priority: optional
+Description: QR-Code localization debug tool
+Build-Time:20250303_170622
