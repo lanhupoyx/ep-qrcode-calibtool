@@ -13,8 +13,8 @@ def main():
     app = topFrame(root)#顶层窗体
     
     tab1 = ChangeIndexTab(app)#标签页1
-    # tab2 = SearchJumpLogTab(app)#标签页2
-    # tab3 = SearchYawTab(app)#标签页3
+    tab2 = SearchJumpLogTab(app)#标签页2
+    tab3 = SearchYawTab(app)#标签页3
     tab4 = ReadmeTab(app)#标签页4
        
     # app.backup_file(app.SiteTableName, app.paramFolder)# 执行文档备份操作
