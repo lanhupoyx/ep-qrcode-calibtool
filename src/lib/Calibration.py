@@ -5,8 +5,8 @@ import math
 from geometry_msgs.msg import PoseStamped
 from geometry_msgs.msg import TransformStamped
 from tf2_geometry_msgs import do_transform_pose
-from minimum_enclosing_circle import Point
-from minimum_enclosing_circle import minimum_enclosing_circle
+from lib.minimum_enclosing_circle import Point
+from lib.minimum_enclosing_circle import minimum_enclosing_circle
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D

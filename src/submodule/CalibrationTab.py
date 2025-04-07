@@ -1,35 +1,28 @@
+import threading
+import math
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
 
-from calib import Calibration
-
-from reboot import reboot
-from topFrame import topFrame
+from lib.Calibration import Calibration
+# from reboot import reboot
+# from topFrame import topFrame
 
 import rospy
+import tf.transformations
 from nav_msgs.msg import Odometry
 
-import threading
-
-import tf.transformations
-import math
 
 # 创建一个锁对象
 lock = threading.Lock()
 
-class ChangeIndexTab(reboot): 
+class CalibrationTab(): 
     def __init__(self, app):
         self.tab = app.tab1
         
-        # 定义要备份的文件和备份文件夹
-        self.SiteTableName = app.SiteTableName
-        self.paramFolder = app.paramFolder
-        self.SiteTablepath = self.paramFolder + self.SiteTableName
-        self.notebook = app.notebook
-        
         # 添加标签页到 Notebook
-        self.notebook.add(self.tab, text=' 1.相机标定 ')
+        self.notebook = app.notebook
+        self.notebook.add(self.tab, text=' 相机标定 ')
         
         # 雷达定位状态指示
         self.label_lidar = ttk.Label(self.tab, text="Lidar loc:")
@@ -182,9 +175,9 @@ class ChangeIndexTab(reboot):
                 # 使用格式化字符串将数据嵌入到提示信息中
                 x = round(calib.result[0], 4)
                 y = round(calib.result[1], 4)
-                yaw = round(calib.result[2], 4)
+                yaw = round(calib.result[2]*180.0/math.pi, 4)
                 radius = round(calib.result[3], 4)
-                info_message = f"x: {x}\ny: {y}\nyaw: {yaw}\nradius: {radius}"
+                info_message = f"x: {x}(m)\ny: {y}(m)\nyaw: {yaw}(deg)\nradius: {radius}(m)"
                 # 显示信息提示框
                 messagebox.showinfo("标定结果", info_message)
                 calib.showArray()
@@ -232,7 +225,7 @@ class ChangeIndexTab(reboot):
     def initDataTest(self):
         # self.entry_x.insert(0, "0.592")
         # self.entry_y.insert(0, "0.3405")  # 0 表示从第 0 个字符位置开始插入
-        self.entry_yaw.insert(0, "1.605")
+        self.entry_yaw.insert(0, "91.96")
 
         self.addIndex  = self.addIndex + 1
         self.data.append({"index":self.addIndex, 
@@ -279,31 +272,29 @@ class ChangeIndexTab(reboot):
                                                     round(row["m_yaw"]*180.0/math.pi, 3)))
 
 
-def ros_thread():
-    """
-    ROS线程
-    """
-    rospy.spin()# 保持节点运行，直到被手动停止
+# def ros_thread():
+#     """
+#     ROS线程
+#     """
+#     rospy.spin()# 保持节点运行，直到被手动停止
     
-def main():
-    root = tk.Tk()#tinker
-    app = topFrame(root)#顶层窗体
+# def main():
+#     root = tk.Tk()#tinker
+#     app = topFrame(root)#顶层窗体
     
-    # 初始化ROS节点
-    rospy.init_node('odometry_subscriber', anonymous=True)
-    tab1 = ChangeIndexTab(app)#标签页1
-
-
-    thread_ros = threading.Thread(target=ros_thread)
-    thread_ros.daemon = True  # 设置为守护线程
-    thread_ros.start()
+#     # 初始化ROS节点
+#     rospy.init_node('odometry_subscriber', anonymous=True)
+#     thread_ros = threading.Thread(target=ros_thread)
+#     thread_ros.daemon = True  # 设置为守护线程
+#     thread_ros.start()
     
-    thread_odom = threading.Thread(target=tab1.odom_monitor)
-    thread_odom.daemon = True  # 设置为守护线程
-    thread_odom.start()
+#     tab1 = Calibration(app)#标签页1
+#     thread_odom = threading.Thread(target=tab1.odom_monitor)
+#     thread_odom.daemon = True  # 设置为守护线程
+#     thread_odom.start()
        
-    root.mainloop()# 主循环
+#     root.mainloop()# 主循环
     
-#main函数
-if __name__ == "__main__":
-   main()
+# #main函数
+# if __name__ == "__main__":
+#    main()

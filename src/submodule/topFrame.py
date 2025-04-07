@@ -14,10 +14,10 @@ class topFrame:
         self.SiteTableName = "SiteTable.txt" 
         self.paramFolder = "/var/xmover/params/ep-qrcode-loc/" 
         self.SiteTablepath = self.paramFolder + self.SiteTableName
-        self.readmePath = "/opt/xmover/app/ep-qrcode-calibtool/readme.txt" 
+        self.readmePath = "/home/xun/work/ep-qrcode-calibtool/readme.txt" 
         
         self.root = root
-        self.root.title("中力-定位相机标定工具 v0.1.0")
+        self.root.title("中力-定位相机标定工具 v1.0.0")
         
         # 创建 Notebook 控件
         self.notebook = ttk.Notebook(self.root)

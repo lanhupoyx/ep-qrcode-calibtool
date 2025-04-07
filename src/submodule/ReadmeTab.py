@@ -11,7 +11,7 @@ class ReadmeTab:
         self.notebook = app.notebook
         self.notebook.add(self.tab, text=' 教程 ')
 
-        self.result_text2 = tk.Text(self.tab, height=26, width=150)
+        self.result_text2 = tk.Text(self.tab, height=19, width=87)
         self.result_text2.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
         self.showReadme()
 
