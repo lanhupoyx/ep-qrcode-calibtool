@@ -22,7 +22,7 @@ else
     echo "Build-Time:$CurrentTime" >> "$CRTDIR/deb_package/DEBIAN/control"
 fi
 
-pyinstaller --onefile main.py
+pyinstaller --onefile src/main.py
 
 cp /home/xun/work/ep-qrcode-calibtool/dist/main /home/xun/work/ep-qrcode-calibtool/deb_package/opt/xmover/app/ep-qrcode-calibtool/ep-qrcode-calibtool
 cp /home/xun/work/ep-qrcode-calibtool/readme.txt /home/xun/work/ep-qrcode-calibtool/deb_package/opt/xmover/app/ep-qrcode-calibtool/
@@ -30,7 +30,8 @@ cp /home/xun/work/ep-qrcode-calibtool/readme.txt /home/xun/work/ep-qrcode-calibt
 
 rm -r build
 rm -r dist
-rm -r __pycache__
+rm -r src/lib/__pycache__
+rm -r src/submodule/__pycache__
 rm main.spec
 
 
