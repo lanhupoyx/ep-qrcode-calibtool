@@ -88,7 +88,7 @@ class CalibrationTab():
         
         rospy.Subscriber("/base", Odometry, self.odom_callback)
         
-        self.initDataTest()
+        # self.initDataTest()
         
     def acktionAdd(self):
         if not (self.lidarOK and self.qrcodeOK):

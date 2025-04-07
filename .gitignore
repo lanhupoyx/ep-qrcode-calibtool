@@ -2,3 +2,4 @@ deb_output/
 src/__pycache__/
 src/lib/__pycache__/
 src/submodule/__pycache__/
+*.pyc

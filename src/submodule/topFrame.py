@@ -14,7 +14,7 @@ class topFrame:
         self.SiteTableName = "SiteTable.txt" 
         self.paramFolder = "/var/xmover/params/ep-qrcode-loc/" 
         self.SiteTablepath = self.paramFolder + self.SiteTableName
-        self.readmePath = "/home/xun/work/ep-qrcode-calibtool/readme.txt" 
+        self.readmePath = "/opt/xmover/app/ep-qrcode-calibtool/readme.md"
         
         self.root = root
         self.root.title("中力-定位相机标定工具 v1.0.0")

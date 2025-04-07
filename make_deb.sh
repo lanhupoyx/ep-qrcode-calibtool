@@ -31,7 +31,7 @@ pyinstaller --hidden-import src.submodule.CalibrationTab\
 
 cp /home/xun/work/ep-qrcode-calibtool/dist/main\
     /home/xun/work/ep-qrcode-calibtool/deb_package/opt/xmover/app/ep-qrcode-calibtool/ep-qrcode-calibtool
-cp /home/xun/work/ep-qrcode-calibtool/readme.txt\
+cp /home/xun/work/ep-qrcode-calibtool/readme.md\
     /home/xun/work/ep-qrcode-calibtool/deb_package/opt/xmover/app/ep-qrcode-calibtool/
 
 
