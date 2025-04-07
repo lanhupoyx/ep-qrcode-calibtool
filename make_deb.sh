@@ -22,16 +22,23 @@ else
     echo "Build-Time:$CurrentTime" >> "$CRTDIR/deb_package/DEBIAN/control"
 fi
 
-pyinstaller --onefile src/main.py
+pyinstaller --hidden-import src.submodule.CalibrationTab\
+            --hidden-import src.submodule.ReadmeTab\
+            --hidden-import src.submodule.topFrame\
+            --hidden-import src.lib.Calibration\
+            --hidden-import src.lib.minimum_enclosing_circle\
+            --onefile main.py
 
-cp /home/xun/work/ep-qrcode-calibtool/dist/main /home/xun/work/ep-qrcode-calibtool/deb_package/opt/xmover/app/ep-qrcode-calibtool/ep-qrcode-calibtool
-cp /home/xun/work/ep-qrcode-calibtool/readme.txt /home/xun/work/ep-qrcode-calibtool/deb_package/opt/xmover/app/ep-qrcode-calibtool/
+cp /home/xun/work/ep-qrcode-calibtool/dist/main\
+    /home/xun/work/ep-qrcode-calibtool/deb_package/opt/xmover/app/ep-qrcode-calibtool/ep-qrcode-calibtool
+cp /home/xun/work/ep-qrcode-calibtool/readme.txt\
+    /home/xun/work/ep-qrcode-calibtool/deb_package/opt/xmover/app/ep-qrcode-calibtool/
 
 
 rm -r build
 rm -r dist
-rm -r src/lib/__pycache__
-rm -r src/submodule/__pycache__
+# rm -r src/lib/__pycache__
+# rm -r src/submodule/__pycache__
 rm main.spec
 
 

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=ep-qrcode-calibtool
+Exec=/opt/xmover/app/ep-qrcode-calibtool/start.sh
+Type=Application
+Icon=/opt/xmover/app/ep-qrcode-calibtool/ep-qrcode-calibtool.png
+Terminal=false
+Name[zh_CN]=定位相机标定工具

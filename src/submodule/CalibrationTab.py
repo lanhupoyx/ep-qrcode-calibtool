@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
 
-from lib.Calibration import Calibration
+from src.lib.Calibration import Calibration
 # from reboot import reboot
 # from topFrame import topFrame
 
